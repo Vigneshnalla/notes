@@ -19,6 +19,9 @@ The root directory (`/`) is the top-level directory of the Linux filesystem. All
 
 ### `/bin`
 Contains essential executable files that are available to all users of the system. These are critical commands required to start the system and perform basic operations.
+/bin/ls - Command to list directory contents.
+/bin/cp - Command to copy files and directories.
+/bin/mv - Command to move or rename files and directories.
 
 ### `/sbin`
 Contains system binaries that are primarily used by the system administrator for system maintenance. This includes binaries for filesystem management, hardware management, and system control.
@@ -30,7 +33,7 @@ Holds system-wide configuration files. These files manage the configurations of 
 Contains personal directories for each user on the system. Each user has their own subdirectory within `/home`, where their personal files, configurations, and documents are stored.
 
 ### `/usr`
-Contains user applications and utilities that are not critical to the system's basic operation. This includes documentation, libraries, and non-essential binaries.
+The /usr directory, short for "Unix System Resources," contains files and directories that are not required for basic system functionality but are essential for running installed software and supporting user-specific operation.
 
 ## Additional Directories
 
