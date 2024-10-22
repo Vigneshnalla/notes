@@ -41,6 +41,7 @@ Contains system administration binaries and commands. These are primarily used b
 - **`/sbin/ifconfig`** - Command to configure network interfaces.
 - **`/sbin/reboot`** - Command to reboot the system.
 - **`/sbin/fsck`** - Command to check and repair filesystems.
+- **`/sbin/fdisk`** - Manages disk partitioning.
 - **`/sbin/init`** - Process that initializes the system.
 
 ### `/etc`
@@ -51,6 +52,12 @@ It is the central location for system-wide configuration files in Linux.These co
 - **`/etc/passwd`** - List of user accounts.
 - **`/etc/hostname`** - File containing the system's hostname.
 - **`/etc/ssh/sshd_config`** - Configuration file for the SSH daemon.
+Here are some best practices for effectively managing Linux configuration files:
+
+- **Regular Backups**: Regularly create backups of configuration files to ensure easy restoration in case of mistakes or accidental changes.
+- **Documentation**: Document any modifications made to configuration files, including the reason and date of the change.
+- **Version Control**: Use version control systems like Git to track changes made to configuration files, enabling collaboration and easy rollback.
+
 
 ### `/home`
 Contains personal directories for users. Each user has a separate folder for storing personal files, documents, and configurations. Examples:
