@@ -53,7 +53,7 @@ It is the central location for system-wide configuration files in Linux.These co
 - **`/etc/hostname`** - File containing the system's hostname.
 - **`/etc/ssh/sshd_config`** - Configuration file for the SSH daemon.
 
-#Here are some best practices for effectively managing Linux configuration files:
+# Here are some best practices for effectively managing Linux configuration files:
 
 - **Regular Backups**: Regularly create backups of configuration files to ensure easy restoration in case of mistakes or accidental changes.
 - **Documentation**: Document any modifications made to configuration files, including the reason and date of the change.
