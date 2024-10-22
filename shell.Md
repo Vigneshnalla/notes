@@ -79,7 +79,6 @@ Contains personal directories for users. Each user has a separate folder for sto
 ### `/lib`
 Contains essential shared libraries needed for system binaries in `/bin` and `/sbin`. Examples:
 
-- **`/lib/libc.so.6`** - Standard C library.
 - **`/lib/modules`** - Kernel modules required for booting the system.
 - **`/lib/systemd`** - Files related to systemd, the system initialization service.
 
