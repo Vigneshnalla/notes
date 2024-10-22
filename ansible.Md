@@ -48,5 +48,6 @@ In the command:
   - Useful in environments with intermittent network connectivity.
   - In the Ansible Pull model, each managed node is responsible for deciding when to update its configuration.
   - Better for large-scale deployments where nodes can operate independently and manage their configurations.
-  - Resilience: If a node is offline or loses connection temporarily, it can update itself once it's back online, without missing any updates.
+- **Resilience**: If a node is offline or loses connection temporarily, it can update itself once it's back online, without missing any updates.
+
 These methods offer flexibility depending on your environment and operational needs!
