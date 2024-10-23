@@ -3,5 +3,33 @@ o Explanation: Command substitution is a process that allows you to replace a
 command with its output. It's achieved by enclosing the command in 
 backticks (`) or using $(command)
 
+internet gateway:
+    It enables resources in public subnets (which  have public IPs) to access the internet for updates or external services.
+
 NAT gateway --> public subnet
-this is to enable outbound internet traffic to the private servers.. general use cases fetching the updates, downloading packages from internet
+general use cases fetching the updates, downloading packages from internet
+It enables resources in private subnets (which don’t have public IPs) to access the internet for updates or external services.
+It doesn’t allow inbound connections from the internet.
+We place this in public subnet
+
+
+
+An IP address (Internet Protocol address) is a unique numerical label assigned to each device connected to a computer network that uses the Internet Protocol for communication. Ip address in two formats:
+    1) 16 digit ==> 8.8.8.8 [it allows 256*256*256*256 which is approximately 4.3 billion unique addresses]
+    2) 32 digit ==> 29ad:sfd8:_:... [it is divided into 8 groups of each 4 hexa digts seperated by colons]
+It serves two main purposes: identifying the host or network interface
+    1) Network id: identifying specifig network
+    2) host id: identifying specific device(host) within that network
+public Ip: visible to external network
+private Ip : used within internal networks like home or office ) not acessible fro internet directly
+
+Subnet mask
+It is used to separate the network address from the host address, allowing a router to quickly determine where to forward a packet
+Make networks easier to maintain
+Route packets
+When a router receives a data packet, it examines the destination IP address included in the packet header.
+By applying the subnet mask to the destination IP address, the router can determine which part of the address refers to the network and which part refers to the host.
+If Device A wants to send a packet to Device B, it checks the destination IP address (192.168.1.20).
+Since both devices share the same network portion (192.168.1), Device A can send the packet directly to Device B without needing to go through a router.
+
+
