@@ -82,7 +82,7 @@ variable "frontend_name" {
   description = "Frontend service name"
   default     = "frontend-dev"
 }
-
+```
 # Managing Multiple Environments with Terraform
 
 ## Environment-Specific `.tfvars` Files
@@ -96,7 +96,7 @@ db_name       = "db-dev"
 backend_name  = "backend-dev"
 frontend_name = "frontend-dev"
 domain        = "daws78s.online"
-
+```
 ### Example `dev.tfvars`:
 ```hcl
 environment   = "prod"
@@ -104,9 +104,9 @@ db_name       = "db-prod"
 backend_name  = "backend-prod"
 frontend_name = "frontend-prod"
 domain        = "daws78s.online"
-
-S3 Backend Configuration for Remote State
-To manage state separately for each environment, use different S3 buckets for each environment's state file.
+```
+** S3 Backend Configuration for Remote State
+To manage state separately for each environment, use different S3 buckets for each environment's state file **.
 
 Example Backend Configuration:
 In main.tf:
