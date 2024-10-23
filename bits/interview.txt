@@ -1,0 +1,4 @@
+What is command substitution in shell scripting?
+o Explanation: Command substitution is a process that allows you to replace a 
+command with its output. It's achieved by enclosing the command in 
+backticks (`) or using $(command)
