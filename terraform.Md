@@ -105,8 +105,9 @@ backend_name  = "backend-prod"
 frontend_name = "frontend-prod"
 domain        = "daws78s.online"
 ```
-** S3 Backend Configuration for Remote State
-To manage state separately for each environment, use different S3 buckets for each environment's state file **.
+## S3 Backend Configuration for Remote State
+To manage state separately for each environment, use different S3 buckets for each environment's state file.
+
 
 Example Backend Configuration:
 In main.tf:
