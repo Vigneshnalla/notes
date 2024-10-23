@@ -37,3 +37,48 @@
 
 1. **Local State** risks accidental edits or deletions and doesn’t support collaboration well.
 2. **Remote State** is centralized, safe, and supports team workflows with locking to prevent conflicts.
+
+
+# Creating Multiple Environments with Terraform
+
+## Overview
+To manage multiple environments (e.g., **DEV**, **QA**, **PROD**, **UAT**) in Terraform, you can use the same code base with environment-specific configurations. This is typically achieved using **`.tfvars`** files to override default values and manage environment-specific settings.
+
+## Using `.tfvars` Files
+
+- **Code is the same** for all environments—resource definitions remain consistent.
+- Use `.tfvars` files to specify values that differ between environments (e.g., database names, URLs, instance types).
+- This allows you to reuse the same Terraform configuration for environments like **DEV** and **PROD**, while changing only the variables.
+
+### Example Environments
+- **DEV** (Development)
+- **QA** (Quality Assurance)
+- **PROD** (Production)
+- **UAT** (User Acceptance Testing)
+
+## Managing Environments with `.tfvars`
+
+### 1. **Default Variables**
+You can define variables in a `variables.tf` file with default values. These values can be overridden by environment-specific `.tfvars` files.
+
+**Example `variables.tf`:**
+```hcl
+variable "environment" {
+  description = "The environment to deploy to (dev, qa, prod, uat)"
+  default     = "dev"
+}
+
+variable "db_name" {
+  description = "Database name"
+  default     = "db-dev"
+}
+
+variable "backend_name" {
+  description = "Backend service name"
+  default     = "backend-dev"
+}
+
+variable "frontend_name" {
+  description = "Frontend service name"
+  default     = "frontend-dev"
+}
