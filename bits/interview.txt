@@ -2,3 +2,6 @@ What is command substitution in shell scripting?
 o Explanation: Command substitution is a process that allows you to replace a 
 command with its output. It's achieved by enclosing the command in 
 backticks (`) or using $(command)
+
+NAT gateway --> public subnet
+this is to enable outbound internet traffic to the private servers.. general use cases fetching the updates, downloading packages from internet
