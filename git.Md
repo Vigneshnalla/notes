@@ -34,6 +34,13 @@ parent b077e6f3e4f4bf3802a0cdfbcb2b3ea710e652e2
 author vignesh <vigneshnalla777@gmail.com> 1729647244 +0530
 committer vignesh <vigneshnalla777@gmail.com> 1729647244 +0530
 
+### if you check this git cat-file for mergeCommit
+$ git cat-file bc2c239 -p 
+then you see two parents 
+
+tree 89933f95b84e664f61a20adac7add3b269c9c1a9
+parent aidsafkdsa90dsf9dsafsaf90as0f90dsa9f9as0  this one is previous main branch id 
+parent b077e6f3e4f4bf3802a0cdfbcb2b3ea710e652e2 this one is last feature branch id
 
 ### Unpushed Commits in Git
 
@@ -51,3 +58,6 @@ it create a new branch and both new and main branch will point to the same hash 
 
 pull request:
 when you want to raise a pull request before anyone merging code into main branch you need to add classic branch protection rule in setting/branch in that add main branch and prtect merging branches[ select require a pull request before merging]
+
+
+when you rainse a pull requst it showw all the commits and files that are added to your branch and you need one member to approve this pull request so we need one person go to colloborats and temas add people and give write acess it is need to approve our pull request
