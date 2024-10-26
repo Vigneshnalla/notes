@@ -34,11 +34,19 @@ parent b077e6f3e4f4bf3802a0cdfbcb2b3ea710e652e2
 author vignesh <vigneshnalla777@gmail.com> 1729647244 +0530
 committer vignesh <vigneshnalla777@gmail.com> 1729647244 +0530
 
-added terraform info
 
+### Unpushed Commits in Git
 
-***
-000
+```bash
+git log origin/main..HEAD
+```
+This command shows all the commits that are in your local branch (HEAD refers to your current branch, typically main) but not in the remote branch (origin/main). If you have committed changes but haven't pushed them to the remote, you'll see those commits listed here.
+
+### Branch
+```bash
+git checkout -b <Branch-name>
+```
+it create a new branch and both new and main branch will point to the same hash code becuase we have not made any changes 
 
 
 pull request:
