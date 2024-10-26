@@ -1,0 +1,1 @@
+Added changes to check the merge with the old commit created in the new checkout branch and the latest main branch
