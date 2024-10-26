@@ -1,28 +1,39 @@
 # Jenkins Installation Script
-# This script installs Jenkins on a Red Hat-based system.
 
-# Step 1: Add the Jenkins repository
+This script installs Jenkins on a Red Hat-based system.
+
+## Step 1: Add the Jenkins repository
+```bash
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+```
 
-# Step 2: Configure the Jenkins repository
+## Step 2: Configure the Jenkins repository
+```bash
 cd /etc/yum.repos.d/
 echo "[jenkins]" | sudo tee jenkins.repo
 echo "name=Jenkins-stable" | sudo tee -a jenkins.repo
 echo "baseurl=http://pkg.jenkins.io/redhat-stable" | sudo tee -a jenkins.repo
 echo "gpgcheck=1" | sudo tee -a jenkins.repo
+```
 
-# Step 3: Import the GPG key
+## Step 3: Import the GPG key
+```bash
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+```
 
-
-# Step 4: Install required packages
+## Step 4: Install required packages
+```bash
 sudo yum install fontconfig java-17-openjdk -y
 sudo yum install jenkins -y
+```
 
-# Step 5: Start and enable Jenkins service
+## Step 5: Start and enable Jenkins service
+```bash
 sudo systemctl daemon-reload
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+```
+
 
 
 
