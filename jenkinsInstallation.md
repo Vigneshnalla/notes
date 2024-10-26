@@ -10,10 +10,11 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/
 ## Step 2: Configure the Jenkins repository
 ```bash
 cd /etc/yum.repos.d/
-echo "[jenkins]" | sudo tee jenkins.repo
-echo "name=Jenkins-stable" | sudo tee -a jenkins.repo
-echo "baseurl=http://pkg.jenkins.io/redhat-stable" | sudo tee -a jenkins.repo
-echo "gpgcheck=1" | sudo tee -a jenkins.repo
+vim jenkins.repo
+[jenkins]
+name=Jenkins-stable
+baseurl=http://pkg.jenkins.io/redhat-stable
+gpgcheck=1
 ```
 
 ## Step 3: Import the GPG key
