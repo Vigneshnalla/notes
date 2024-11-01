@@ -2,7 +2,6 @@
 
 - **Terraform** is an Infrastructure as Code (IaaC) tool using a **declarative** approach—what you declare is what you get.
 - It’s **idempotent**, meaning running the same code multiple times won’t recreate resources if they already exist.
-- Unlike shell scripting, which is **imperative** (step-by-step), Terraform focuses on the end state.
 
 ## State in Terraform
 
@@ -97,7 +96,7 @@ backend_name  = "backend-dev"
 frontend_name = "frontend-dev"
 domain        = "daws78s.online"
 ```
-### Example `dev.tfvars`:
+### Example `prod.tfvars`:
 ```hcl
 environment   = "prod"
 db_name       = "db-prod"
@@ -124,5 +123,24 @@ terraform {
 ## For DEV environment:
 ```hcl
 terraform apply -var-file="dev.tfvars"
+```
 ## For PROD environment:
 ```bash terraform apply -var-file="prod.tfvars"
+```
+## terraform init -upgrade
+
+- The command `terraform init -upgrade` is used to reinitialize your Terraform working directory and update any provider plugins to their latest versions.
+
+- For example:
+  - I have code in a Git repository, and my Terraform code is pointing to this.
+  - If I run `terraform init`, it downloads the code from Git and places it in `.terraform/modules` inside it.
+
+- When I make changes in Git and try to see those in Terraform, the changes will not be reflected. However, if I run this cmd `terraform init -upgrade`, it will update the modules.
+  
+  ```bash
+  $ terraform init -upgrade
+  Initializing the backend...
+  Upgrading modules...
+  Downloading git::https://github.com/Vigneshnalla/terraform-aws-ec2.git?ref=main for ec2-test...       
+
+
