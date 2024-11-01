@@ -3,7 +3,7 @@
 
 ## Overview
 Ansible operates in an agentless architecture, meaning that it runs from a central control node (the machine where Ansible is installed) and communicates with the managed nodes over SSH (or WinRM for Windows).
-Means Master need to have ansible software in it then only we able to perform ansible related operatioins
+Means Master need to have ansible software in it, then only we able to perform ansible related operatioins
 
 ### Installation Command
 To install Ansible on the control node, use the following command:
@@ -72,6 +72,9 @@ roles/
       └── README.md            # Documentation for the role
 ```
 
+```bash 
+ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 -e configFile=/path/to/configfile db.yaml
+```
 ## Configuration File Preferences
 Ansible considers configuration file preferences in the following order:
 1. **Environment Variable**: You can set an environment variable for configuration:
