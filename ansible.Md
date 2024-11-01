@@ -170,4 +170,11 @@ In the command:
   - Better for large-scale deployments where nodes can operate independently and manage their configurations.
 - **Resilience**: If a node is offline or loses connection temporarily, it can update itself once it's back online, without missing any updates.
 
+- Advantages of This Approach:
+
+    Automatic Recovery: If a server is misconfigured or goes down, it can automatically restore the latest stable state without manual intervention.
+    Consistency: Ensures servers are consistent with the defined state, reducing the risk of drift or unintended changes.
+
+    Disadvantages: Potential delays if updates are not pulled frequently, which can result in outdated information or configurations
+
 These methods offer flexibility depending on your environment and operational needs!
