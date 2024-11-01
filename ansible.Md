@@ -72,9 +72,6 @@ roles/
       └── README.md            # Documentation for the role
 ```
 
-```bash 
-ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 -e configFile=/path/to/configfile db.yaml
-```
 ## Configuration File Preferences
 Ansible considers configuration file preferences in the following order:
 1. **Environment Variable**: You can set an environment variable for configuration:
