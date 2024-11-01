@@ -7,7 +7,7 @@ This guide includes essential commands, configurations, and setup instructions f
 
 ## NGINX Server Setup
 
-Edit the NGINX HTML file:
+To Edit the NGINX HTML file using nano:
 ```bash
 sudo nano /usr/share/nginx/html/index.html
 ```
