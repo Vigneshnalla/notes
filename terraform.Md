@@ -125,7 +125,8 @@ terraform {
 terraform apply -var-file="dev.tfvars"
 ```
 ## For PROD environment:
-```bash terraform apply -var-file="prod.tfvars"
+```bash 
+terraform apply -var-file="prod.tfvars"
 ```
 ## terraform init -upgrade
 
