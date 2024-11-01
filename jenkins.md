@@ -46,3 +46,11 @@ Ensure to configure the remote root directory for logging.
 3. **Build Triggers**:
    - Under the **Build Triggers** section, check **GitHub hook trigger for GITScm polling**.
    - Save your configuration.
+--------------------------------------------
+
+
+I automated the backend process by setting up CI/CD pipelines in Jenkins. First, I configured Jenkins, a Jenkins agent, and a Nexus server. I created a folder called "expense" in Jenkins, with two pipelines. The first pipeline (upstream job) pulls the backend code, navigates into the appropriate folder, takes the version from package.json, runs npm install, creates a zip file, and uploads it to Nexus. It then triggers the second pipeline (downstream job) by passing the version number.
+
+The downstream job handles deploying the backend instance with the latest code. It reads the version parameter and uses Terraform to provision resources by running terraform apply -var="appversion={params.appVersion}". Then, using remote execution, it passes the version to Ansible, which attempts to connect to the backend instance. However, the backend instance is in a security group that doesn’t allow SSH access from the Jenkins agent (due to restrictions from AWS tools). To resolve this, I had to add an inbound rule in the backend's security group to allow SSH access from all private instances within the default VPC CIDR, enabling the Jenkins agent to connect and deploy the code successfully.
+
+After Ansible connects to the backend instance, it uses the passed version to download the corresponding code from the Nexus server. Ansible then places the zip file containing the source code in the backend instance and extracts it, ensuring the backend is running the latest version of the code.
