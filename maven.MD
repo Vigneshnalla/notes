@@ -79,11 +79,17 @@ sudo mv apache-maven-3.9.4 /opt/maven
 ```bash
 vim ~/.bashrc
 ```
+
+The .bashrc file is a script that runs whenever a new terminal session is started, making it an ideal place to set environment variables.
+
+
 Add the following lines:
 ```bash
 export M2_HOME=/opt/maven
 export PATH=$M2_HOME/bin:$PATH
 ```
+$PATH: This represents the current value of the PATH variable before the modification. By including $PATH at the end of the command, it ensures that the existing directories in PATH are preserved.
+
 Then apply the changes:
 ```bash
 source ~/.bashrc
@@ -94,27 +100,3 @@ This command reloads the .bashrc file to apply the changes you made. Without thi
 ```bash
 mvn -version
 ```
-
-Ec2:
-===
-    we need to install java before working with manve
-    Install java
-sudo dnf update -y
-sudo dnf install java-17-amazon-corretto
-Install Maven
-wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
-tar -xvzf apache-maven-3.9.4-bin.tar.gz
-        -x: Extract the files.
-        -v: Verbose output (shows the progress in the terminal).
-        -z: Uncompress the .gz file.
-        -f: Specifies the filename to operate on.
-sudo mv apache-maven-3.9.4 /opt/maven
-Set Up Environment Variables
-vim ~/.bashrc. and add below lines
-    The .bashrc file is a script that runs whenever a new terminal session is started, making it an ideal place to set environment variables.
-export M2_HOME=/opt/maven
-export PATH=$M2_HOME/bin:$PATH
-source ~/.bashrc
-Explanation: This command reloads the .bashrc file to apply the changes you made. Without this step, the new environment variables wouldn’t be recognized in your current terminal session.
-
-Verify Installation : mvn -version
