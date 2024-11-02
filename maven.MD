@@ -49,8 +49,41 @@ myapp.war
 | |--images/
 |-- index.html
 
+# Maven Goals
 
+1. **Validate**
+   - Command: `mvn validate`
+   - Description: Executes where `pom.xml` is available to ensure the project structure is correct.
 
+2. **Compile**
+   - Command: `mvn compile`
+   - Description: Compiles the code located in `src/main/java`, creating two new directories:
+     - `target`
+     - `classes`
+     - Output: The compiled classes (e.g., `App.class`) are generated in `target/classes`.
+
+3. **Test**
+   - Command: `mvn test`
+   - Description: Runs tests using a testing framework like JUnit.
+
+4. **Package**
+   - Command: `mvn package`
+   - Description: Packages the compiled code into a JAR or WAR file, stored inside the `target` directory.
+
+5. **Verify**
+   - Command: `mvn verify`
+   - Description: Checks the integrity of the project and verifies that the package is valid.
+   - Integrity refers to ensuring that the project structure and contents are consistent and have not been corrupted or altered unexpectedly.
+
+6. **Install**
+   - Command: `mvn install`
+   - Description: Installs the packaged JAR/WAR file into the local Maven repository (e.g., `/home/ec2/vignesh/target/vignesh-1.0-snapshot.jar`) for use by other projects.
+
+7. **Clean**
+   - Command: `mvn clean`
+   - Description: Cleans up the `target` directory and removes any files created during the build process. This helps to ensure a fresh build environment.
+
+### To run the jar file java -jar <jarName>.jar
 
 
 # Installing Java and Maven
