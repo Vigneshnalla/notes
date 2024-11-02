@@ -145,3 +145,22 @@ terraform apply -var-file="prod.tfvars"
   Downloading git::https://github.com/Vigneshnalla/terraform-aws-ec2.git?ref=main for ec2-test...       
 
 
+
+terraform init -backend-config=dev/backend.tfvars
+terraform plan -var-file=dev/dev.tfvars
+
+terraform init -backend-config=dev/backend.tfvars
+If fields are missing in the backend configuration, terraform init will raise an error, pointing to the missing fields required for the backend to function properly. Make sure all fields required by your chosen backend are provided in the backend.tf file before running the init command.
+
+and for var files
+terraform plan -var-file=dev/dev.tfvars
+
+if you try to add backend.config again it gives error backend configuration changed
+
+so we need to reconfigure
+
+terraform init -reconfigure -backend-config=prod/backend.tf
+
+this is for pointing to bucket belongs to paritcular environment
+
+terraform destroy -var-file=prod/prod.tfvars -auto-approve
