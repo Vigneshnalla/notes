@@ -83,7 +83,7 @@ myapp.war
    - Command: `mvn clean`
    - Description: Cleans up the `target` directory and removes any files created during the build process. This helps to ensure a fresh build environment.
 
-### To run the jar file java -jar **jarName**.jar
+##### To run the jar file java -jar **jarName**.jar
 
 
 # Installing Java and Maven
