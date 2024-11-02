@@ -2,6 +2,8 @@
 
 Jenkins is a plain server that becomes powerful only when plugins are added. 
 
+A plugin in jenkisn is an add-on that extends the functionaliy of the jenkins software
+
 ## Adding Nodes for Load Distribution
 
 We can add nodes to distribute the load for building multiple projects according to different environments. 
@@ -83,9 +85,44 @@ Consistency: Ensures that all jobs use the same version of the tools.
 Maintenance: If you need to change the path or version of a tool, you only need to update it in one place.
 Simplicity: Reduces complexity in job configurations, making them easier to read and maintain.
 
+```bash
 df -ht
-
-
 it is using /tmp diskspace issue
 
 we can configure monitoring 
+
+By using jekkins url /8080/restart
+we can restart the serivce
+
+```
+pipeline {
+    agent any
+
+    environment {
+        AWS_CREDENTIALS_ID = 'aws-credentials' // Use the ID you provided when adding credentials
+        REGION = 'us-west-2' // Set your desired AWS region
+        ACCOUNT_ID = '123456789012' // Your AWS account ID
+        APP_VERSION = 'latest' // Set your application version
+    }
+
+    stages {
+        stage('Docker build') {
+            steps {
+                script {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS_ID]]) {
+                        sh """
+                            aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
+                            docker build -t ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/expense-backend:${APP_VERSION} .
+                            docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/expense-backend:${APP_VERSION}
+                        """
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
