@@ -85,7 +85,7 @@ Consistency: Ensures that all jobs use the same version of the tools.
 Maintenance: If you need to change the path or version of a tool, you only need to update it in one place.
 Simplicity: Reduces complexity in job configurations, making them easier to read and maintain.
 
-```bash
+-------------------------------------------
 df -ht
 it is using /tmp diskspace issue
 
@@ -94,7 +94,7 @@ we can configure monitoring
 By using jekkins url /8080/restart
 we can restart the serivce
 
-```
+-------------------------------------------
 pipeline {
     agent any
 
