@@ -63,12 +63,17 @@ This trigger initiates a build when GitHub sends a webhook notification to Jenki
 
 
 
+## Throttle Builds in Jenkins
 
-### 1. Throttle Concurrent Builds
-You can configure jobs to limit the number of concurrent builds that can run at the same time. This helps to ensure that system resources are not exhausted by too many simultaneous builds.
+In Jenkins, **throttling builds** helps manage system resources effectively by controlling the number of concurrent builds that run simultaneously. This ensures that no single job or node consumes excessive resources, leading to a more balanced and efficient build environment.
 
-### 2. Throttle Builds per Node
-This feature allows you to set limits on how many builds can run on a specific node, ensuring that resources are allocated efficiently across your Jenkins environment.
+### Throttle Build Options
+
+1. **Throttle Concurrent Builds**  
+   This option allows you to limit the total number of builds that can run concurrently across all nodes. By setting this limit, you can prevent system overload from too many builds running at once, which helps maintain optimal performance.
+
+2. **Throttle Builds per Node**  
+   With this option, you can specify the number of builds allowed to run concurrently on a single node. This setting distributes resource usage evenly across the Jenkins environment, ensuring no individual node is overwhelmed by too many builds.
 
 
 
