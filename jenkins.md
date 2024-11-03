@@ -17,6 +17,19 @@ Ensure to configure the remote root directory for logging.
 1. **Launch Agent by Connecting to the Controller**
 2. **Launch Agent via SSH**
 
+# Build Options in Jenkins
+
+Jenkins provides various build triggers to automate the build process based on specific conditions. Here are the key build options available:
+
+### 1. Build Periodically
+This trigger allows you to schedule builds at specific times using cron-like syntax. You can set it to run builds at regular intervals, such as daily, weekly, or at specific hours.
+
+### 2. Poll SCM
+This trigger periodically checks the source code management (SCM) system for changes. Jenkins polls the repository at specified intervals and triggers a build if it detects any changes since the last build.
+
+### 3. GitHub Hook Trigger for GIT SCM Polling
+This trigger initiates a build when GitHub sends a webhook notification to Jenkins. It is triggered by events on the GitHub repository, such as push events or pull request updates.
+
 ## Steps to Configure Webhook in GitHub
 
 1. **Go to Your Repository**
@@ -50,18 +63,6 @@ Ensure to configure the remote root directory for logging.
    - Save your configuration.
 
 
-# Build Options in Jenkins
-
-Jenkins provides various build triggers to automate the build process based on specific conditions. Here are the key build options available:
-
-### 1. Build Periodically
-This trigger allows you to schedule builds at specific times using cron-like syntax. You can set it to run builds at regular intervals, such as daily, weekly, or at specific hours.
-
-### 2. Poll SCM
-This trigger periodically checks the source code management (SCM) system for changes. Jenkins polls the repository at specified intervals and triggers a build if it detects any changes since the last build.
-
-### 3. GitHub Hook Trigger for GIT SCM Polling
-This trigger initiates a build when GitHub sends a webhook notification to Jenkins. It is triggered by events on the GitHub repository, such as push events or pull request updates.
 
 
 ### 1. Throttle Concurrent Builds
