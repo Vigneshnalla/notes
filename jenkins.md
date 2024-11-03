@@ -129,6 +129,44 @@ For a visual guide, refer to this video tutorial:
 [Watch Tutorial](https://www.youtube.com/watch?v=XuW2UHsSliU&list=TLPQMDIxMTIwMjRLuoK1kw6-4w&index=4)
 
 
+### Deploying Maven Application to Tomcat Using Jenkins Pipeline
+
+#### Step 1: Configure Jenkins Credentials
+First, add the Tomcat user credentials in Jenkins global credentials.
+
+#### Step 2: Install Required Plugins
+You need to install the following plugins:
+- **Maven Integration Plugin**
+- **Deploy to Container Plugin**  
+  This plugin allows you to deploy a WAR file to a container after a successful build.
+
+#### Step 3: Create a New Item
+1. **Select "New Item"** in Jenkins.
+2. **Choose "Maven Project".**
+3. **Configure Source Code Management**:
+   - Add your Git repository.
+
+#### Step 4: Configure Build Settings
+1. **In the "Build" section**, specify the goals and options:
+   ```plaintext
+   clean install package
+   ```
+2. **In the "Post-build Actions" section**, select:
+   - **Deploy to Container**
+     - Specify the WAR file path:
+       ```plaintext
+       **/*.war
+       ```
+
+#### Step 5: Add Container Configuration
+1. **Add Container**:
+   - Select your Tomcat version.
+   - Provide the Tomcat URL (e.g., `http://your-tomcat-url:8080`).
+   - Select the previously configured credentials.
+
+#### Step 6: Save Configuration
+Click on **Apply** and then **Save** your project configuration.
+
 --------------------------------------------
 
 
