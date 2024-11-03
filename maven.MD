@@ -133,3 +133,64 @@ This command reloads the .bashrc file to apply the changes you made. Without thi
 ```bash
 mvn -version
 ```
+
+
+
+## Install and Configure Apache Tomcat
+
+### Step 1: Install Java
+Tomcat requires Java to run, so ensure Java is installed:
+```sh
+sudo dnf install java-17-amazon-corretto
+```
+
+### Step 2: Download and Extract Tomcat
+Download the Tomcat tar file from the official site. Extract it and move it to the `/opt` directory:
+```sh
+wget https://downloads.apache.org/tomcat/tomcat-10/v10.1.30/bin/apache-tomcat-10.1.30.tar.gz
+tar -xvzf apache-tomcat-10.1.30.tar.gz
+sudo mv apache-tomcat-10.1.30 /opt/tomcat
+```
+
+### Step 3: Start Tomcat
+Run the startup script from the `bin` folder:
+```bash
+cd /opt/tomcat/bin
+sh startup.sh
+```
+
+Alternatively, create a symbolic link for easier startup:
+```sh
+sudo ln -s /opt/tomcat/bin/startup.sh /usr/bin/tomcatstart
+sh tomcatstart
+```
+
+### Step 4: Change the Tomcat Port (Optional)
+To modify the default port (8080), edit the `server.xml` file:
+```sh
+sudo vim /opt/tomcat/conf/server.xml
+```
+Locate the `<Connector port="8080" ...>` tag and change the port number as needed.
+
+### Step 5: Enable Access to the Manager Application
+Edit the `context.xml` file to allow external access:
+```sh
+sudo find / -name context.xml
+sudo vim /opt/apache-tomcat-10.1.30/webapps/host-manager/META-INF/context.xml
+sudo vim /opt/apache-tomcat-10.1.30/webapps/manager/META-INF/context.xml
+```
+Remove the following line from both files:
+```xml
+<Valve className="org.apache.catalina.valves.RemoteAddrValve" ... />
+```
+
+### Step 6: Add User Credentials
+Edit `tomcat-users.xml` to add a user with access permissions:
+```xml
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>
+<role rolename="admin-gui"/>
+<user username="admin" password="admin" roles="admin-gui,manager-gui,manager-script,manager-status"/>
+```

@@ -109,7 +109,7 @@ To configure security settings in Jenkins, follow these steps:
 
 However, matrix-based security only provides limited filtering and isn’t ideal for managing access per project. To address this, you can install the **Role-Based Authorization Strategy** plugin.
 
-## Setting Up Role-Based Authorization After Adding Role-Based Authorization Strategy
+## Setting Up Role-Based Authorization After Adding Role-Based Authorization Strategy Plugin
 1. **Install the Role-Based Authorization Strategy Plugin**:
    - This plugin adds new options in **Configure Global Security** to assign roles based on user access needs.
 
