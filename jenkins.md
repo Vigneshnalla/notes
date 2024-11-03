@@ -49,7 +49,6 @@ This trigger initiates a build when GitHub sends a webhook notification to Jenki
    - Click the **Add webhook** button to save your settings.
 
 
-***IN NOde***
 ## Configuring Jenkins UI
 
 1. **Go to Jenkins UI**:
