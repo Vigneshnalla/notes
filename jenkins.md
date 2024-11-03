@@ -48,6 +48,82 @@ Ensure to configure the remote root directory for logging.
 3. **Build Triggers**:
    - Under the **Build Triggers** section, check **GitHub hook trigger for GITScm polling**.
    - Save your configuration.
+
+
+# Build Options in Jenkins
+
+Jenkins provides various build triggers to automate the build process based on specific conditions. Here are the key build options available:
+
+### 1. Build Periodically
+This trigger allows you to schedule builds at specific times using cron-like syntax. You can set it to run builds at regular intervals, such as daily, weekly, or at specific hours.
+
+### 2. Poll SCM
+This trigger periodically checks the source code management (SCM) system for changes. Jenkins polls the repository at specified intervals and triggers a build if it detects any changes since the last build.
+
+### 3. GitHub Hook Trigger for GIT SCM Polling
+This trigger initiates a build when GitHub sends a webhook notification to Jenkins. It is triggered by events on the GitHub repository, such as push events or pull request updates.
+
+
+### 1. Throttle Concurrent Builds
+You can configure jobs to limit the number of concurrent builds that can run at the same time. This helps to ensure that system resources are not exhausted by too many simultaneous builds.
+
+### 2. Throttle Builds per Node
+This feature allows you to set limits on how many builds can run on a specific node, ensuring that resources are allocated efficiently across your Jenkins environment.
+
+
+
+# Master-Slave Architecture in Jenkins
+
+The Master-Slave Architecture in Jenkins is a way to distribute the workload
+of building, testing, and deploying applications across multiple "nodes". The "Master" is the main jenkins server and slaves or agents are additional machines that master controls
+
+### 1. Master (Controller)
+- The master node is responsible for managing the Jenkins environment, including:
+  - Scheduling builds
+  - Handling configurations and plugin management
+  - Managing the user interface, job queues, and job configurations
+- While the master can run jobs, it’s  preferred to delegate jobs to slave nodes to keep the master focused on coordination.
+
+### 2. Slave (Agent)
+- Slaves, or agents, are separate machines configured to execute jobs as directed by the master.
+- Agents can run on various operating systems, allowing jobs to be executed on different environments.
+- Each agent can run one or more jobs simultaneously, based on its configuration and capacity.
+
+In slave we don't install jenkins, which only requires Java on the agent machine
+
+## Security Configuration in Jenkins
+
+To configure security settings in Jenkins, follow these steps:
+
+### Navigate to Security Settings:
+- Go to **Manage Jenkins > Configure Global Security**.
+
+### User Access Administration:
+- Under **Authorization**, configure user access levels:
+  - **Matrix-based Security**: Allows fine-grained control by setting specific permissions for each user or group.
+
+However, matrix-based security only provides limited filtering and isn’t ideal for managing access per project. To address this, you can install the **Role-Based Authorization Strategy** plugin.
+
+### Setting Up Role-Based Authorization
+1. **Install the Role-Based Authorization Strategy Plugin**:
+   - This plugin adds new options in **Configure Global Security** to assign roles based on user access needs.
+
+2. **Configure Role-Based Strategy**:
+   - Go to **Manage Jenkins > Configure Global Security** and select **Role-Based Strategy** under Authorization.
+   
+3. **Assign Roles**:
+   - Navigate to **Manage and Assign Roles**. Define roles as needed:
+     - **Global Roles**: Set general roles, such as "Developer."
+     - **Item Roles**: Use these for project-specific filtering. Example: `portal.*` for a pattern-based project role.
+
+4. **Assigning Roles to Users**:
+   - In **Assign Roles**, grant users the required **Global Roles** (required to access the Jenkins console) and any **Item Roles** specific to their projects.
+
+#### Reference Video
+For a visual guide, refer to this video tutorial:
+[Watch Tutorial](https://www.youtube.com/watch?v=XuW2UHsSliU&list=TLPQMDIxMTIwMjRLuoK1kw6-4w&index=4)
+
+
 --------------------------------------------
 
 
@@ -93,6 +169,14 @@ we can configure monitoring
 
 By using jekkins url /8080/restart
 we can restart the serivce
+
+SystemLevel Variable:
+   we can use this variable across multiple jobs
+   we add this by go to manage Jenkins --> System --> Gloabal Properties --> env variables and add 
+
+Jenkisn Variables: built in varibales
+   http: jenkins url /env-vars.html
+      sucha as build_number, job_name
 
 -------------------------------------------
 pipeline {
