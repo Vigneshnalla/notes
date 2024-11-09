@@ -50,17 +50,6 @@ Run all playbooks as the `sudo` user to ensure correct permissions.
    ansible-playbook main.yaml -e "component=mongodb"
    ```
 
-2. **Verify MongoDB Configuration**:
-   - Connect to MongoDB to confirm accessibility:
-     ```bash
-     mongosh "mongodb://mongodb.vigneshdev.online:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
-     ```
-   - Switch to the `catalogue` database and check for `products` collection:
-     ```javascript
-     use catalogue
-     db.products.find()
-     ```
-
 ---
 
 ### Catalogue Service
@@ -72,8 +61,16 @@ The Catalogue service fetches product details from MongoDB.
    ansible-playbook main.yaml -e "component=catalogue"
    ```
 
-2. **Confirm MongoDB Connectivity**:
-   Ensure Catalogue can access MongoDB and retrieve products data.
+2. **Verify MongoDB configuration because data is added to MongoDB during the execution of the catalogue role**:
+   - Connect to MongoDB to confirm accessibility:
+     ```bash
+     mongosh "mongodb://mongodb.vigneshdev.online:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
+     ```
+   - Switch to the `catalogue` database and check for `products` collection:
+     ```javascript
+     use catalogue
+     db.products.find()
+     ```
 
 ---
 
@@ -95,6 +92,8 @@ The Web service displays products on the frontend.
    - Ensure the web host is running.
 
 ---
+
+## User and Cart Services (MongoDB and Redis)
 
 ### Redis Setup
 
@@ -121,7 +120,7 @@ The Web service displays products on the frontend.
    ansible-playbook main.yaml -e "component=user"
    ```
 
-2. **Update Web Configuration**:
+**Update Web Configuration**:
    - Add entries in `/etc/nginx/default.d/roboshop.conf`.
    - Run the Web component again:
      ```bash
@@ -130,7 +129,16 @@ The Web service displays products on the frontend.
 
 ---
 
-### MySQL, RabbitMQ, Shipping, and Payment Services
+## MySQL, RabbitMQ, Shipping, and Payment Services
+
+These services handle the Roboshop application's backend processes related to order and payment management.
+
+- **MySQL**: Manages data storage for critical transactions, such as order details.
+- **RabbitMQ**: Acts as a messaging broker, enabling services to communicate seamlessly, especially for asynchronous tasks.
+- **Shipping Service**: Manages product shipment details within the order fulfillment process.
+- **Payment Service**: Handles customer payments, verifying and processing transactions.
+
+Execute each Ansible playbook for these services as follows:
 
 1. **Deploy MySQL**:
    ```bash
@@ -153,7 +161,7 @@ The Web service displays products on the frontend.
    ```
 
 5. **Update Web Configuration**:
-   - Add necessary entries in `/etc/nginx/default.d/roboshop.conf`.
+   - Add necessary entries to `/etc/nginx/default.d/roboshop.conf`.
    - Run the Web component once more:
      ```bash
      ansible-playbook main.yaml -e "component=web"
