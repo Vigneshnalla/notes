@@ -89,7 +89,10 @@ The Web service displays products on the frontend.
      ```bash
      nginx -t
      ```
-   - Ensure the web host is running.
+   - Ensure the web host is running and check whether is it able to connect with catalogue service or not.
+   ```bash
+    curl http://web.vigneshdev.online/api/catalogue/categories
+    ```
 
 ---
 
@@ -154,6 +157,24 @@ Execute each Ansible playbook for these services as follows:
    ```bash
    ansible-playbook main.yaml -e "component=shipping"
    ```
+   Verify MySQL connection for Shipping service because it fetches country and shipping codes from MySQL:
+
+Check MySQL connection:
+   ```bash
+      mysql -h mysql.vigneshdev.online -uroot -pRoboShop@1
+   ```
+
+If any errors occur related to the Shipping service, navigate to the Shipping service directory and manually run:
+```bash
+sudo /bin/java -jar /app/shipping.jar
+```
+This will allow Spring to run the application directly, helping you identify and troubleshoot any errors in the Shipping project.
+Also, check if the records and codes are properly inserted into MySQL.
+
+
+
+
+
 
 4. **Deploy Payment**:
    ```bash
@@ -172,3 +193,10 @@ Execute each Ansible playbook for these services as follows:
 ## Summary
 
 Following this guide, you should have a fully configured Roboshop environment with all services deployed and functional. Verify each component as outlined to ensure proper setup.
+
+
+
+### Problem That i faced while deploying 
+Before creating the route53 records i updated so my component not ablel to resove the host after also updating the records
+to updaate host
+    echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
