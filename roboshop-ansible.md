@@ -88,6 +88,7 @@ The Web service displays products on the frontend.
    - Test Nginx configuration:
      ```bash
      nginx -t
+     sudo tail -n 20 /var/log/nginx/error.log
      ```
    - Ensure the web host is running and check whether is it able to connect with catalogue service or not.
    ```bash
@@ -157,7 +158,7 @@ Execute each Ansible playbook for these services as follows:
    ```bash
    ansible-playbook main.yaml -e "component=shipping"
    ```
-   Verify MySQL connection for Shipping service because it fetches country and shipping codes from MySQL:
+Verify MySQL connection for Shipping service because it fetches country and shipping codes from MySQL:
 
 Check MySQL connection:
    ```bash
@@ -196,7 +197,49 @@ Following this guide, you should have a fully configured Roboshop environment wi
 
 
 
-### Problem That i faced while deploying 
-Before creating the route53 records i updated so my component not ablel to resove the host after also updating the records
-to updaate host
-    echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+
+
+# Troubleshooting Steps
+If you try to access Route 53 records, you may encounter issues with the host. To resolve this, go directly to the service and execute this command in that service
+
+## 1. Update DNS Resolver
+```bash
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+```
+
+## 2. Check Open Ports
+```bash
+netstat -lntp
+```
+
+## 3. Check Running Processes
+```bash
+ps -ef | grep <your_process>
+```
+
+## 4. Check Service Status
+```bash
+systemctl status <service_name>
+```
+
+## 5. Test Host Resolution
+```bash
+telnet catalogue.vigneshdev.online
+```
+
+## 6. Verify Nginx Configuration
+```bash
+cat /etc/nginx/default.d/roboshop.conf
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+## 7. Check DNS Resolution
+Use the following commands to verify DNS resolution:
+```bash
+dig catalogue.vigneshdev.online
+nslookup catalogue.vigneshdev.online
+```
+
+---
+
+Ensure DNS resolution works and the services are correctly running to resolve the host and establish connectivity.
