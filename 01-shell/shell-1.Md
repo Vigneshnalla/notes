@@ -83,7 +83,7 @@ Contains essential shared libraries needed for system binaries in `/bin` and `/s
 - **`/lib/systemd`** - Files related to systemd, the system initialization service.
 
 ### `/opt`
-This directory is specifically designated for optional or additional software that isn't part of the core Linux distribution.The /opt directory provides a centralized location for these applications, making it convenient for both users and system administrators to manage and access them.
+This directory is used to store the  additional software that isn't part of the  Linux distribution.The /opt directory provides a centralized location for these applications, making it convenient for both users and system administrators to manage and access them.
 
 Furthermore, since these applications aren't part of the core Linux distribution, they're typically installed separately. This means you can easily update or remove them without affecting the stability of the system.
 
