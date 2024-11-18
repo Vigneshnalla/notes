@@ -1,6 +1,40 @@
 ### A  shebang (#!) 
 - is the first line in a script file that tells the operating system what interpreter to use to execute the script. 
 
+
+### `set` Commands
+
+- **`set -x`**: Enables debugging, printing each command and its arguments as they are executed.
+- **`set -e`**: Causes the script to exit immediately if any command returns a non-zero exit status (error).
+- **`set -o pipefail`**: if any command in the pipeline fails  the entire pipeline returns a non-zero exit status causing the script to stop
+ex:
+``` bash
+#!/bin/bash
+set -o pipefail
+
+echo "Starting script"
+# Simulate a failure in the first command of the pipeline
+non_existent_command | echo "This will not run"
+
+echo "Script completed"
+
+```
+If you don't set set -o pipefail, the script would not fail because it only checks the exit status of the last command in the pipeline (i.e., echo "This will not run"), which would still run even if the first command fails.
+
+
+### Before executing any script, it's better to check the permissions
+
+## `chmod`
+- **userPerm** - **group_perm** - **other**
+  
+- **`chmod 777 file.txt`**: Grants full permissions (read, write, and execute) to the user, group, and others.
+- **`chmod g+w file.txt`**: Adds write permission for the group.
+- **`chmod g-w file.txt`**: Removes write permission for the group.
+- **`chmod g=rx file.txt`**: Sets group permissions to read and execute.
+- **`chmod o+x file.txt`**: Adds execute permission for others.
+- **`chmod o-x file.txt`**: Removes execute permission for others.
+- **`chmod o=r file.txt`**: Sets others' permissions to read only.
+
 ## ls -ltr
 - used to list the contents with detailed info and sorted by modifation time in reverse order
 
