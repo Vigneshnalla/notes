@@ -4,6 +4,7 @@
 
 ### `set` Commands
 
+- **`set -exo pipefial`**
 - **`set -x`**: Enables debugging, printing each command and its arguments as they are executed.
 - **`set -e`**: Causes the script to exit immediately if any command returns a non-zero exit status (error).
 - **`set -o pipefail`**: if any command in the pipeline fails  the entire pipeline returns a non-zero exit status causing the script to stop
@@ -114,3 +115,148 @@ Tasks: 128 total,   1 running, 127 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  4.0 us,  2.0 sy,  0.0 ni, 94.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
 MiB Mem :  32000.0 total,  10245.0 free,  11500.0 used,   5255.0 buff/cache
 MiB Swap:   4096.0 total,   4096.0 free,      0.0 used.   15000.0 avail Mem
+
+```
+### `ps` Command
+
+The `ps` command in Linux/Unix is used to display information about running processes on a system. It shows the currently active processes, their IDs, and resource usage, among other details. 
+
+### Common `ps` Command Options:
+
+- **`ps`**: Displays the processes running in the current shell.
+- **`ps aux`**: Displays all processes running on the system for all users.
+  - **`a`**: Shows processes for all users.
+  - **`u`**: Displays the user/owner of the process.
+  - **`x`**: Shows processes that do not have a terminal (e.g., background processes).
+  
+- **`ps -ef`**: Displays all processes running on the system in a full-format listing.
+  - **`-e`**: Shows all processes.
+  - **`-f`**: Shows full details, including the parent process ID (PID).
+
+- **`ps -aux | grep <process_name>`**: Used to search for a specific process in the output.
+  
+### Example Output:
+
+```bash
+$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1 169028  5628 ?        Ss   01:00   0:10 /sbin/init
+vignesh    245  0.0  0.3 244176  6884 pts/0    Ss   02:03   0:00 bash
+vignesh    267  0.1  1.2 1769404 24844 pts/0   Sl+  02:04   0:23 /usr/bin/python3
+```
+#### columsn in ps
+PID: Process ID
+%CPU: Percentage of CPU usage
+%MEM: Percentage of memory usage
+VSZ: Virtual memory size
+STAT: Process status
+START: Start time of the process
+TIME: Total accumulated CPU time
+COMMAND: Command that started the process
+
+
+#### Grep
+Channels : studout, studproc, stud error
+some commands will send the outputh in changess on that time piple will not work as expected
+
+
+## commands
+    ps -ef | grep amazon | awk '{print $2}'
+
+
+## curl
+-X POST: Specifies the HTTP method as POST.
+-d: Sends the specified data in the request body.
+
+### `find` Command
+
+The `find` command is used to search for files and directories within a specified directory hierarchy. It allows you to search based on a variety of conditions such as name, size, type, modification date, and more.
+
+#### Basic Syntax:
+
+```bash
+find <path> <conditions> <actions>
+find /path/to/search -name "filename.txt"
+. Find files modified within the last 7 days:
+find /path/to/search -mtime -7
+Find files larger than 1GB:
+    find /path/to/search -size +1G
+
+
+if []
+then
+
+else
+
+fi
+
+for i in {1..5}
+do
+    echo "$i"
+done
+
+while [ condition ]
+do
+    # commands
+done
+
+
+do 
+
+done while []
+
+
+### `kill` Command
+
+The `kill` command in Linux is used to send signals to processes, typically to terminate them. By default, `kill` sends the `SIGTERM` signal, which gracefully terminates the process. You can specify different signals to control processes in various ways.
+
+#### Basic Syntax:
+
+```bash
+kill [options] <pid>
+```
+- **`<pid>`**: The Process ID (PID) of the process to which the signal should be sent.
+- **`[options]`**: Options for specifying the type of signal.
+
+#### Common Signals:
+- **`SIGTERM (15)`**: Terminate the process gracefully (default signal).
+- **`SIGKILL (9)`**: Forcefully kill the process. The process cannot ignore this signal.
+- **`SIGSTOP (19)`**: Pause (stop) the process.
+- **`SIGCONT (18)`**: Resume a stopped process.
+- **`SIGHUP (1)`**: Hang up the process (often used to restart processes).
+
+#### Examples:
+
+1. **Kill a process by PID:**
+
+```bash
+kill 1234
+```
+- Sends the `SIGTERM` signal to the process with PID 1234. This allows the process to clean up and terminate gracefully.
+
+2. **Force kill a process:**
+
+```bash
+kill -9 1234
+```
+- Sends the `SIGKILL` signal to the process with PID 1234. This immediately terminates the process without giving it a chance to clean up.
+
+3. **Send a different signal (e.g., SIGHUP):**
+
+```bash
+kill -1 1234
+```
+- Sends the `SIGHUP` signal to the process with PID 1234. This is often used to request a process to reload its configuration without terminating it.
+
+4. **Kill all processes by name** (using `pkill`):
+
+```bash
+pkill firefox
+```
+
+
+
+
+
+
+### commands left [trap , trace]
