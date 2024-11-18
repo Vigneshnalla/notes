@@ -105,7 +105,7 @@ DevOps solves this by enabling faster release cycles through CI/CD pipelines and
 
 ### Ways to interact with aws
 
-#### WS Management Console:
+#### AWS Management Console:
 Web-based GUI for easy AWS resource management and monitoring.
 
 ####  AWS CLI:
@@ -115,7 +115,7 @@ Command-line tool for managing AWS services through terminal commands.
 Programming libraries for interacting with AWS services programmatically.
 
 #### AWS CloudFormation:
-Automates infrastructure provisioning using YAML/JSON templates.
+Automates infrastructure provisioning using YAML/JSON templates. It is internal tool that means it is an aws tool it has more priority that terraform.
 
 #### AWS CDK (Cloud Development Kit):
 Defines AWS infrastructure using familiar programming languages.
