@@ -4,7 +4,10 @@
 
 ### `set` Commands
 
+- ** set -u ** option in Bash is used to treat unset variables and parameters as an error when performing parameter expansion. This means that if your script attempts to use an undefined variable, the script will immediately terminate with an error.
+
 - **`set -exo pipefial`**
+
 - **`set -x`**: Enables debugging, printing each command and its arguments as they are executed.
 - **`set -e`**: Causes the script to exit immediately if any command returns a non-zero exit status (error).
 - **`set -o pipefail`**: if any command in the pipeline fails  the entire pipeline returns a non-zero exit status causing the script to stop
@@ -259,4 +262,66 @@ pkill firefox
 
 
 
-### commands left [trap , trace]
+## commands left [trap , trace, logrotate]
+
+
+
+
+
+
+
+
+
+-----------------interview---------------
+### write a command to print no of s's in text
+
+x=hellosidsfks
+
+grep -o "s"<<<"$x" | wc -l
+
+$x=a variable
+you can aslo place file name here
+
+
+The <<< operator in Bash is called a here-string. It is used to provide a string as input directly to a command. This is especially useful when you want to avoid creating temporary files or piping strings manually.
+
+grep -o "s" myfile.txt | wc -l
+
+Using cron tab we can shecuel the rerppots
+
+
+diff between hard link and soft link
+
+hard links points to the file name which will points to the data on the storage device
+soft links points to the file name which will point agan to the file name whi
+
+write code to sort list of name
+
+ps -ef | awk -F" " '{}'
+
+
+
+check script file is executed sucessfulll or not
+
+
+what is the falg to check fi the file is empty or not>
+
+-s "$file": Checks if the file exists and has a size greater than zero (i.e., the file is not empty).
+
+files_in_home=$(ls $(echo ~))
+files_in_home=`ls \`echo ~\``
+
+
+
+You want your shell script (.sh file) to run automatically every time your system restarts, without manually executing it after a reboot.
+
+crontab -e
+
+@reboot /home/user/scripts/myscript.sh
+
+chmod +x /home/user/scripts/myscript.sh
+crontab -l
+
+
+what is sticky bit?
+
