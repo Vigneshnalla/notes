@@ -4,7 +4,6 @@ command with its output. It's achieved by enclosing the command in
 backticks (`) or using $(command)
 
 internet gateway:
-    It enables resources in public subnets (which  have public IPs) to access the internet for updates or external services.
 
 NAT gateway --> public subnet
 general use cases fetching the updates, downloading packages from internet
@@ -25,8 +24,9 @@ private Ip : used within internal networks like home or office ) not acessible f
 
 Subnet mask
 It is used to separate the network address from the host address, allowing a router to quickly determine where to forward a packet
-Make networks easier to maintain
-Route packets
+ADv:
+    Make networks easier to maintain
+    Route packets
 When a router receives a data packet, it examines the destination IP address included in the packet header.
 By applying the subnet mask to the destination IP address, the router can determine which part of the address refers to the network and which part refers to the host.
 If Device A wants to send a packet to Device B, it checks the destination IP address (192.168.1.20).
