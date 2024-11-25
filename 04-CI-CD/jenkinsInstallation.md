@@ -1,3 +1,6 @@
+# Jenkins run on 8080 port
+/var/lib/jenkins/secrets/initialAdminPassword
+
 # Jenkins Installation Script
 
 This script installs Jenkins on a Red Hat-based system.
