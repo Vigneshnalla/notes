@@ -14,3 +14,5 @@ We have different types of scheduling alogrithms
 
 3) Priority Scheduling:
     we will assign pririority to each job no say i say that which job jas highest priority which will be executed first 
+
+    

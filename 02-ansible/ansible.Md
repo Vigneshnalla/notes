@@ -173,8 +173,21 @@ In the command:
 - Advantages of This Approach:
 
     Automatic Recovery: If a server is misconfigured or goes down, it can automatically restore the latest stable state without manual intervention.
-    Consistency: Ensures servers are consistent with the defined state, reducing the risk of drift or unintended changes.
+    Consistency: Ensures servers are consistent with the defined state, reducing the risk of drift or unintended
+     changes.
 
     Disadvantages: Potential delays if updates are not pulled frequently, which can result in outdated information or configurations
 
 These methods offer flexibility depending on your environment and operational needs!
+
+
+#### Some Additional Things
+  - -name: unzip backend code
+      ansible.builtin.unarchive:
+          src:/tmp/backend.zip #
+          dest: /app
+          Removmte_src:yes
+
+      Ansible thinks that it has to copy the file from its server to app location 
+      In order to say our file is present in remote server we have to add remote _drc param yes
+      remote_src: no                      # Indicates the source is on the control node
